@@ -1,0 +1,153 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block main-content %}
+{% block extra_css %}
+    <style>
+        
+            /* Style for the welcome message */
+        h3 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Style for the list group */
+        .col-sm-2 ul {
+            padding-left: 0;
+        }
+
+        .col-sm-2 li {
+            margin-bottom: 10px;
+        }
+
+        /* Style for the buttons */
+        .btn {
+            color: black;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+        .btn-active {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            width: 20%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        /* Style for error messages */
+        .text-danger {
+            color: #dc3545;
+        }
+
+        /* Style for success messages */
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Style for error messages */
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+    </style>
+{% endblock extra_css %}
+
+<div class="container my-5">
+ <div class="row">
+  <h3 >Welcome {{ user.username|capfirst }} </h3>
+  <div class="col-sm-2 border-end">
+   <ul class="list-unstyled">
+    <li class="d-grid"><a href="{% url 'profile' %}" class="btn-active">Profile</a></li>
+    <li class="d-grid"><a href="{% url 'address' %}" class="btn">Address</a></li>
+   </ul>
+  </div>
+  <div class="col-sm-8 offset-sm-1">
+   <form action="" method="post">
+     {% csrf_token %}
+        {% if messages %}
+            {% for m in messages %}
+                <p {% if m.tags %} class="alert alert-{{ m.tags }} mb-5" {% endif %}>{{ m }}</p>
+            {% endfor %}
+        {% endif %}
+        
+        {% for fm in form %}
+            <div class="form-group mb-3">
+                {{ fm.label_tag }} 
+                {% if fm.name == 'password' %}
+                    <div class="input-group">
+                        {{ fm }} 
+                        <button class="btn btn-outline-secondary" type="button" id="passwordToggle" onclick="togglePasswordVisibility()">Show</button>
+                    </div>
+                {% else %}
+                    {{ fm }} 
+                {% endif %}
+                <small class="text-danger">{{ fm.errors|striptags }}</small>
+            </div>
+        {% endfor %}
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <input type="submit" class="btn btn-primary mt-4" value="Submit">
+        </div>
+        <br>
+        
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="alert alert-danger my-3">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+   </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %} 

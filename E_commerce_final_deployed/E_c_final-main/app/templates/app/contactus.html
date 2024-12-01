@@ -1,0 +1,27 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Feedback Form{% endblock title %}
+{% block extra_css %}
+<style>
+    /* Add your custom CSS styles here */
+</style>
+{% endblock extra_css %}
+{% block main-content %}
+<div class="container my-5">
+ <div class="row">
+ <h3>Welcome {{ user.username }}</h3>
+  <div class="col-sm-9 offset-sm-1">
+    <div class="alert alert-success" role="alert">
+        Your password change has been changed successfully!
+    </div>
+    
+    <!-- Feedback form -->
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+    </form>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

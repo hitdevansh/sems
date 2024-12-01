@@ -1,0 +1,91 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Mobile{% endblock title %}
+{% block main-content %}
+{% block extra_css %}
+    <style>
+            /* Style for the list group */
+        /* Style for the list group */
+        .list-group {
+            margin-bottom: 20px;
+        }
+
+        .list-group-item {
+            background-color: #f8f9fa; /* Background color for list items */
+            border-color: #dee2e6; /* Border color for list items */
+            color: #212529; /* Text color for list items */
+            transition: background-color 0.3s ease; /* Smooth transition effect */
+        }
+
+        /* Active state for list items */
+        .list-group-item.active {
+            background-color: #007bff; /* Background color for active list items */
+            border-color: #007bff; /* Border color for active list items */
+            color: #fff; /* Text color for active list items */
+        }
+
+        /* Hover state for list items */
+        .list-group-item:hover {
+            background-color: #e9ecef; /* Background color on hover */
+        }
+
+        /* Style for the product items */
+        .item {
+            border: 1px solid #dee2e6; /* Border color for product items */
+            padding: 15px;
+            background-color: #fff; /* Background color for product items */
+            transition: box-shadow 0.3s ease; /* Smooth transition effect */
+        }
+
+        .item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect on hover */
+        }
+
+        .item img {
+            max-width: 100%; /* Ensure images don't exceed their container */
+        }
+
+        .item .fw-bold {
+            margin-top: 15px;
+            color: #007bff; /* Text color for title */
+        }
+
+        .item small {
+            color: #6c757d; /* Text color for discounted price */
+        }
+
+
+    </style>
+{% endblock extra_css %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="list-group">
+                <a href="{% url 'topwear'%}" class="list-group-item list-group-item-action" aria-current="true">All topwears</a>
+                {% comment %} <a href="{% url 'mobiledata' 'Redmi' %}" class="list-group-item list-group-item-action" aria-current="true">Redmi</a> {% endcomment %}
+                {% comment %} <a href="{% url 'mobiledata' 'Samsung' %}" class="list-group-item list-group-item-action" aria-current="true">Samsung</a> {% endcomment %}
+                <a href="{% url 'topweardata' 'men' %}" class="list-group-item list-group-item-action" aria-current="true">For Men</a>
+                <a href="{% url 'topweardata' 'women' %}" class="list-group-item list-group-item-action" aria-current="true">For Women</a>
+            </div>
+        </div>
+        <div class="col-sm-8 offset-sm-1">
+            <div class="row">
+                {%for product in topwears%}
+                <div class="col-sm-4 text-center mb-4">
+                    <a href = "{% url 'product-detail' product.id %}" class="btn">
+                    <div class="item">
+                        <img src="{{product.product_image.url}}" alt="" height="300">
+                        <div class="fw-bold">{{product.title}}</div>
+                        <div class="fw-bold">Rs. {{product.discounted_price}}
+                            <small class="fw-light text-decoration-line-through">{{product.selling_price}}</small>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

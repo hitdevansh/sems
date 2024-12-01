@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory_Game_By_Devansh</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #new-game-btn {
+            background-color: #007bff;
+            /* Replace with your primary color */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        #new-game-btn:hover {
+            background-color: #0056b3;
+            /* Replace with a slightly darker shade for hover effect */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h4 style="margin-top: 30px;">Match the of <span>Valorant Agent</span>
+        <p style="font-size:large;">Score: <span id="score">0</span>
+            <button id="new-game-btn" style="margin-left: 50px;">New Game</button></p>
+
+    </h4>
+
+    <section id="card-section">
+    </section>
+    <!-- Score Card -->
+    <div id="confetti-wrapper"></div>
+    <script defer src="app.js"></script>
+</body>
+<script>
+    document.getElementById("new-game-btn").addEventListener("click", function() {
+        // Refresh the page on button click
+        location.reload();
+    });
+</script>
+
+</html>

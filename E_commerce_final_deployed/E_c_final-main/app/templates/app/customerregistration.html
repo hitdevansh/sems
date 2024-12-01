@@ -1,0 +1,99 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block title %}Customer Registration{% endblock title %}
+{% block main-content %}
+<div class="container">
+ <div class="row my-3">
+  <div class="col-sm-6 offset-sm-3">
+   <h3>Customer Registration</h3>
+   <hr>
+
+   {% comment %} <form method="post" action="" novalidate class="shadow p-5">
+    {% csrf_token %}
+    {% if messages%}
+      {%for m in messages%}
+         <p {%if m.tags%} class="alert alert-{{m.tags}} mb-5" {%endif%}>{{m}}</p>
+      {%endfor%}
+    {%endif%}
+    <!-- Other form fields go here -->
+    {% csrf_token %}
+      {%for fm in form%}
+      <div class="form-group mb-3">
+         {{fm.label_tag}} {{fm}} 
+         <small class="text-danger">{{fm.errors|striptags}}</small>
+      </div>
+      {% endfor%}
+   
+      <div style="display: flex; align-items: center; justify-content: center;">
+         <input type="submit" class="btn btn-primary mt-4" value="submit">
+      </div>
+      <br>
+      <div class="text-center text-primary fw-bold">
+         <small>Existinf User ?
+         <a href="{% url 'login' %}" class="text-danger">Login Now</a></small>
+      </div>
+      {% if form.non_field_errors%}
+      {%for error in form.non_field_errors%}
+         <p class = "alert alert-danger my-3">{{error}}</p>
+      {%endfor%}
+      {%endif%}
+   </form> {% endcomment %}
+   <form method="post" action="" novalidate class="shadow p-5">
+        {% csrf_token %}
+        {% if messages %}
+        {% for m in messages %}
+            <p {% if m.tags %} class="alert alert-{{ m.tags }} mb-5" {% endif %}>{{ m }}</p>
+        {% endfor %}
+        {% endif %}
+        <!-- Other form fields go here -->
+        {% csrf_token %}
+        {% for fm in form %}
+            <div class="form-group mb-3">
+                {{ fm.label_tag }} 
+                {% if fm.name == 'password1' %}
+                    <div class="input-group">
+                        {{ fm }} 
+                        <button class="btn btn-outline-secondary" type="button" id="passwordToggle" onclick="togglePasswordVisibility()">Show</button>
+                    </div>
+                {% else %}
+                    {{ fm }} 
+                {% endif %}
+                <small class="text-danger">{{ fm.errors|striptags }}</small>
+            </div>
+        {% endfor %}
+
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <input type="submit" class="btn btn-primary mt-4" value="submit">
+        </div>
+        <br>
+        <div class="text-center text-primary fw-bold">
+            <small>Existing User ?
+            <a href="{% url 'login' %}" class="text-danger">Login Now</a></small>
+        </div>
+        
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="alert alert-danger my-3">{{ error }}</p>
+            {% endfor %}
+        {% endif %}
+
+    </form>
+
+   <script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("id_password1");
+        var toggleButton = document.getElementById("passwordToggle");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            toggleButton.innerText = "Hide";
+        } else {
+            passwordInput.type = "password";
+            toggleButton.innerText = "Show";
+        }
+    }
+</script>
+  </div>
+ </div>
+</div>
+{% endblock main-content %}

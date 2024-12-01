@@ -1,0 +1,310 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!--Owl Carousel CSS-->
+    <link rel="stylesheet" href="{% static 'app/css/owl.carousel.min.css' %}">
+
+    <!--FontAwesome CSS-->
+    <link rel="stylesheet" href="{% static 'app/css/all.min.css' %}">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    <title>Devansh's | {% block title %} {% endblock title %} </title>
+    <style>
+      *{
+      -webkit-box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      -o-box-sizing:border-box;
+      -ms-box-sizing:border-box;
+      box-sizing:border-box;
+      }
+
+      body{
+          background: #fff;
+          max-width:1920px;
+          margin:0 auto;
+          overflow-x:hidden;
+      }
+      #footer{
+          margin-top:65px;
+          padding-top: 4rem;
+          padding-bottom: 0px;
+          background-color: black; 
+      }
+
+      .social-links h2{
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .social-links img{
+        padding-bottom: 25px;
+      }
+      
+      .social-icons{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        
+      }
+      .social-icons a{
+        color: #ffffff;
+      }
+      .social-icons a:hover{
+        color:aquamarine;
+      }
+      .address-links li a:hover{
+        color:aquamarine;
+      }
+      .social-icons a i{
+        box-shadow: rgb(0 0 0 / 8%) 0px 4px 12px;
+        padding: 0.4rem 1rem 0.4rem 1rem;
+        border-radius: 3px;
+        color: #82074a;
+        font-size: 16px;
+        margin-right: 12px;
+      }
+ 
+      li{
+        list-style: none;
+      }
+      .useful-link h2{
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .useful-link img{
+        padding-bottom: 15px;
+      }
+      .use-links{
+        line-height: 32px;
+      }
+      .use-links li i{
+          font-size: 14px;
+          padding-right: 8px;
+          color: #ffffff;
+      }
+      .use-links li a{
+          color: #303030;
+          font-size: 15px;
+          font-weight: 500;
+          color: #ffffff;
+      }
+      .use-links li a:hover{
+          color:aqua;
+      }
+      .address h2{  
+        font-size: 20px;
+        font-weight: 600;
+      }
+      .address img{
+          padding-bottom: 15px;
+      }
+      .address-links li a{
+          color: #3e49e2;
+          font-size: 15px;
+          font-weight: 500;
+          color: #ffffff;
+          text-decoration: none;
+      }
+      .use-links li a{
+          text-decoration:none;
+      }
+      .social-links li a{
+          text-decoration:none;
+      }
+      .address-links li i{
+          font-size: 16px;
+          padding-right: 8px;
+          color: #82074a;
+      }
+      .address-links li i:nth-child(1){
+          padding-top: 9px;
+      }
+      .address-links .address1{
+          font-weight: 500;
+          font-size: 15px;
+          display: flex;
+      }
+      .address-links{
+          line-height: 32px;
+          color: #ffffff;
+      }
+      .copy-right-sec{
+          padding: 1.8rem;
+          background-color: rgb(31, 34, 39);
+
+          color: #fff;
+          text-align: center;
+      }
+      .copy-right-sec a{
+          color: #fcd462;
+          font-weight: 500;
+      }
+      
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background:black;">
+     <div class="container" style="font-size:18px;">
+       <a class="navbar-brand" style="color:blue; font-weight:600;" onmouseover="this.style.color='white'"  
+   onmouseout="this.style.color='blue'" href="/">BizarreBazaar</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link active" style="color:blue; font-weight:600;" onmouseover="this.style.color='white'"  
+   onmouseout="this.style.color='blue'" aria-current="page" href="/">Home</a>
+           </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" style="color:blue;font-weight:600;"onmouseover="this.style.color='white'"  
+   onmouseout="this.style.color='blue'" href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Electronics
+             </a>
+             <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+               <li><a class="dropdown-item" href="{% url 'mobile' %}">Mobile</a></li>
+               <li><a class="dropdown-item" href="#">Laptop</a></li>
+             </ul>
+           </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle" style="color:blue;font-weight:600;" onmouseover="this.style.color='white'"  
+   onmouseout="this.style.color='blue'" href="#" id="fashionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Fashion
+             </a>
+             <ul class="dropdown-menu" aria-labelledby="fashionDropdown">
+               <li><a class="dropdown-item" href="{% url 'topwear' %}">Top Wear</a></li>
+               <li><a class="dropdown-item" href="{% url 'bottomwear' %}">Bottom Wear</a></li>
+             </ul>
+           </li>
+         </ul>
+         {% comment %} <form class="d-flex">
+           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+           <button class="btn btn-primary me-5" type="submit">S</button>
+         </form> {% endcomment %}
+         <div>
+          <ul class="navbar-nav  me-auto mb-2 mb-lg-0">
+            {%if request.user.is_authenticated %}
+           <li class="nav-item dropdown mx-2">
+              <a class="nav-link dropdown-toggle" style="color:blue;font-weight:600;text-transform: capitalize;" onmouseover="this.style.color='white'"  
+   onmouseout="this.style.color='blue'" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {{user.username}}
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                <li><a class="dropdown-item" href="{% url 'passwordchange' %}">Change Password</a></li>
+                <li><a class="dropdown-item" id="logout-link" href="{%url 'logout'%}">Logout</a></li>
+              </ul>
+            </li>
+            <li class="nav-item mx-2">
+             <a href="{% url 'showcart' %}" class="nav-link" style="color:blue;font-weight:600;" onmouseover="this.style.color='white'"  
+   onmouseout="this.style.color='blue'"><span class="badge bg-danger">{{cart_count}}</span> Cart </a>
+            </li>
+            {%else%}
+            <li class="nav-item mx-2">
+             <a href="{% url 'login' %}" class="nav-link" style="color:blue;font-weight:600;"onmouseover="this.style.color='white'"  
+   onmouseout="this.style.color='blue'">Login</a>
+            </li>
+            <li class="nav-item mx-2">
+             <a href="{% url 'customerregistration' %}" class="nav-link" style="color:blue;font-weight:600;"onmouseover="this.style.color='white'"  
+   onmouseout="this.style.color='blue'" >Registration</a>
+            </li>
+            {%endif%}
+          </ul>
+         </div>
+       </div>
+     </div>
+    </nav>
+    {% block banner_slider %} {% endblock banner_slider %}
+    {% block livesale %} {% endblock livesale %}
+    {% block main-content %} {% endblock main-content %}
+    <footer id="footer" class="footer" style="padding-bottom:20px;">
+      <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="useful-link"> 
+                    <h2 style="color: blue;">Navigation-links</h2>
+                    <img src="./assets/images/about/home_line.png" alt="" class="img-fluid">
+                    <div class="use-links">
+                        <li><a href="/home"><i class="fa-solid fa-angles-right"></i> Home</a></li>
+                        <li><a href="/mobile"><i class="fa-solid fa-angles-right"></i> Electronics</a></li>
+                        <li><a href="/topwear"><i class="fa-solid fa-angles-right"></i> Fashion</a></li>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+              <div class="social-links">
+                <h2 style="color: blue;">Follow Us</h2>
+                <img src="./assets/images/about/home_line.png" alt="">
+                <div class="social-icons" style="font-weight: 500;">
+                  <li><a href=""><i class="fab fa-facebook-f fa-sm text-danger"></i> Facebook</a></li>
+                  <li><a href=""><i class="fab fa-instagram fa-sm text-danger"></i> Instagram</a></li>
+                  <li><a href=""><i class="fab fa-linkedin-in fa-sm text-danger"></i> Linkedin</a></li>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="address">
+                  <h2 style="color: blue;">Contact-Us</h2>
+                  <img src="./assets/images/about/home_line.png" alt="" class="img-fluid">
+                  <div class="address-links" style="font-weight: 500;">
+                    <li><a href=""><i class="fas fa-map-marker-alt text-danger"></i> Reliance Cross-Gandhinagar Dt Gujarat 220540</a></li>
+                    <li><a href=""><i class="fas fa-phone-alt text-danger"></i> +91 8787878787</a></li>
+                    <li><a href=""><i class="fas fa-envelope text-danger"></i> dummy@gmail.com</a></li>
+                  </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+          
+        
+       <div class="container text-center" style="width: 100%;font-weight:800px; margin-top:15px;">
+          <small class="text-white" style="margin-bottom:50px;">Copyright &copy; 2023 || Designed By Devansh || </small>
+          <img src="{% static 'app/images/payment.png' %}" alt="" srcset="" class="img-fluid" height="5px">
+      </div>
+
+      {% comment %} </div> <!-- End Footer --> {% endcomment %}
+    </footer>
+  </body>
+  <!-- Jquery -->
+  <script>
+    document.getElementById('logout-link').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default action (i.e., navigating to the href)
+        
+        var form = document.createElement('form');
+        form.setAttribute('method', 'post');
+        form.setAttribute('action', '{% url 'logout' %}'); // Replace 'logout' with your logout URL
+    
+        var csrfToken = document.createElement('input');
+        csrfToken.setAttribute('type', 'hidden');
+        csrfToken.setAttribute('name', 'csrfmiddlewaretoken');
+        csrfToken.setAttribute('value', '{{ csrf_token }}'); // Include the CSRF token
+    
+        form.appendChild(csrfToken);
+    
+        document.body.appendChild(form);
+        form.submit();
+    });
+    </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-jFYlL+qw6Uj8Uv/lkbCp80LHqS84PTIqm05cD6rKt4AJl1Lv2L/+XhCtaM5pX5p2w1NvQvbouVFoXCQQoLsG0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="{% static 'app/js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'app/js/all.min.js' %}"></script>
+  <script src="{% static 'app/js/myscript.js' %}"></script>
+
+</html>
